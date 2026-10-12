@@ -46,14 +46,23 @@ seedling 想升級：內容長好＋連好 2 篇 → 換首行＋刪 `unlisted` 
 - 每篇至少連 1–2 篇，不要寫孤島。斷掉的 `[[ ]]` 會顯示斷鏈樣式＋build warning，不破版。
 - 連回主站用完整 URL，如 `[網誌定稿](https://step0.club/blog/stability-trap)`。
 
-## 發佈
+## 發佈（2026-10-12 更新：push 不會自動部署）
+
+Cloudflare 這顆 Worker 沒有接 Git 自動 build（push 到 v5 不會觸發），
+要用 wrangler 從本機直推。第一次先登入（會開瀏覽器）：
 
 ```bash
-git add -A && git commit -m "..." && git push
+npx wrangler login
 ```
 
-push 到 `v5` 分支 → Cloudflare 自動部署 → `https://step0.club/garden` 更新。
-想省部署次數就攢多篇一次 push（一個 push＝一次部署）。
+之後每次發佈（內容或樣式）：
+
+```bash
+npx quartz build && npx wrangler deploy
+```
+
+等 dashboard 顯示 Ready → 到 `https://step0.club/garden/` 看成品。
+想省部署次數就攢多篇一次推（一次 deploy＝一次版本）。
 
 ## 不要動的東西
 

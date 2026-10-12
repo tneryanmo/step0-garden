@@ -1,0 +1,8 @@
+# step0-garden Cloudflare Worker (static assets only, no worker script).
+# Deploy with: npx quartz build && npx wrangler deploy
+# (first time: npx wrangler login)
+name = "step0-garden"
+compatibility_date = "2026-10-12"
+
+[assets]
+directory = "./public"
