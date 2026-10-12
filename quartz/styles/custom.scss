@@ -1,3 +1,212 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+// step0.club — Analog Bitmap Editorial brought to the garden.
+// Mirrors VibeCode1 app/globals.css tokens: paper #F3EEE5, ink #111111,
+// soft #4C4944, faint #6F6B64, accent #C76532. No dark mode, no rounding.
+// Fonts are system-simulated (no Google Fonts fetch, fontOrigin: local).
+
+:root {
+  --headerFont: "Noto Serif TC", "Songti TC", "PMingLiU", "Hiragino Mincho ProN", serif;
+  --bodyFont: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+  --codeFont: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --labelFont: "Arial Narrow", "Helvetica Neue Condensed", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --rule: 1px solid #111111;
+  --rule-soft: 1px solid rgb(17 17 17 / 0.16);
+}
+
+// Paper. Same alpha overlay as the main site (quartz/static/paper.png,
+// copied from VibeCode1 public/img/paper.png). Bundled CSS lands in
+// static/, so a sibling-relative URL works both locally and under /garden.
+body {
+  background-color: var(--light);
+  background-image: url("static/paper.png");
+  background-repeat: repeat;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #c76532;
+  color: #f3eee5;
+}
+
+:focus-visible {
+  outline: 2px solid #c76532;
+  outline-offset: 3px;
+}
+
+// Whole site is right-angled. Print on paper, not an app UI.
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+// Headings stay sharp vector type, never pixelated. Tight, light, editorial.
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+thead {
+  letter-spacing: -0.01em;
+}
+
+article {
+  & > h1 {
+    line-height: 1.16;
+  }
+
+  p,
+  li {
+    line-height: 1.9;
+  }
+}
+
+// Labels and nav stay subordinate to headings: narrow, uppercase, tracked.
+.page-title a,
+.content-meta,
+.breadcrumbs,
+.tag-link,
+.explorer .fold,
+.toc .toc-header,
+.backlinks .backlink-header,
+.recent-notes .recent-header {
+  font-family: var(--labelFont);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.page-title a {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+}
+
+// Links: ink text, short underline that grows on hover. No blue pills.
+a {
+  color: var(--dark);
+  font-weight: 500;
+
+  &:hover {
+    color: var(--dark);
+  }
+
+  &.internal {
+    background-color: transparent;
+    padding: 0;
+    text-decoration: underline;
+    text-decoration-color: rgb(17 17 17 / 0.3);
+    text-underline-offset: 4px;
+
+    &:hover {
+      text-decoration-color: #c76532;
+    }
+  }
+
+  &.external {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgb(17 17 17 / 0.3);
+
+    &:hover {
+      text-decoration-color: #c76532;
+    }
+  }
+}
+
+// Content chrome: thin ink rules instead of gray hairlines.
+hr {
+  background-color: rgb(17 17 17 / 0.2);
+}
+
+.footnotes {
+  border-top: var(--rule-soft);
+}
+
+blockquote {
+  border-left: 2px solid var(--dark);
+  color: var(--dark);
+}
+
+th {
+  border-bottom: 2px solid var(--dark);
+}
+
+tr {
+  border-bottom: var(--rule-soft);
+}
+
+.text-highlight {
+  background-color: var(--textHighlight);
+  padding: 0 0.1rem;
+}
+
+// Inline code and blocks: paper-deep wash, square, ink border.
+code {
+  background: var(--lightgray);
+  border: var(--rule-soft);
+  color: var(--dark);
+}
+
+pre {
+  background: var(--light);
+  border: var(--rule);
+
+  & > code {
+    border: 0;
+    background: none;
+  }
+}
+
+img,
+audio,
+video,
+.external-embed.youtube,
+iframe.pdf {
+  border: var(--rule-soft);
+}
+
+// Sidebar chrome: search, explorer, toc, backlinks, graph.
+// Layout positions are untouched; this only re-skins to paper + ink.
+.search > .search-container > .search-space > input {
+  background: var(--light);
+  border: var(--rule);
+  color: var(--dark);
+  font-family: var(--bodyFont);
+}
+
+.search .search-layout {
+  background: var(--light);
+  border: var(--rule);
+}
+
+.explorer-content ul li a,
+.toc ul li a,
+.backlinks ul li a {
+  color: var(--darkgray);
+
+  &:hover {
+    color: var(--dark);
+  }
+}
+
+.graph > .graph-outer {
+  border: var(--rule-soft);
+  background: var(--light);
+}
+
+footer {
+  border-top: var(--rule-soft);
+}
+
+// Dark-mode toggle is disabled in config, but a returning visitor may
+// still carry saved-theme="dark" in localStorage. Both palettes are
+// identical now, so there is nothing left to override.

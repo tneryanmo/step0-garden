@@ -13,7 +13,7 @@ configuration:
     - templates
     - .obsidian
   theme:
-    fontOrigin: googleFonts
+    fontOrigin: local
     cdnCaching: true
     typography:
       header: Noto Serif TC
@@ -21,25 +21,25 @@ configuration:
       code: IBM Plex Mono
     colors:
       lightMode:
-        light: "#faf8f8"
-        lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
-        darkgray: "#4e4e4e"
-        dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#fff23688"
+        light: "#f3eee5"
+        lightgray: "#e8e0d4"
+        gray: "#6f6b64"
+        darkgray: "#4c4944"
+        dark: "#111111"
+        secondary: "#c76532"
+        tertiary: "#c76532"
+        highlight: rgba(199, 101, 50, 0.12)
+        textHighlight: "#c7653240"
       darkMode:
-        light: "#161618"
-        lightgray: "#393639"
-        gray: "#646464"
-        darkgray: "#d4d4d4"
-        dark: "#ebebec"
-        secondary: "#7b97aa"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#b3aa0288"
+        light: "#f3eee5"
+        lightgray: "#e8e0d4"
+        gray: "#6f6b64"
+        darkgray: "#4c4944"
+        dark: "#111111"
+        secondary: "#c76532"
+        tertiary: "#c76532"
+        highlight: rgba(199, 101, 50, 0.12)
+        textHighlight: "#c7653240"
 plugins:
   - source: "@quartz-community/created-modified-date"
     enabled: true
@@ -99,7 +99,7 @@ plugins:
     enabled: false
     order: 92
   - source: "@quartz-community/quartz-fonts"
-    enabled: true
+    enabled: false
   - source: "@quartz-themes/core"
     enabled: false
     options:
@@ -174,7 +174,7 @@ plugins:
       position: left
       priority: 10
   - source: "@quartz-community/darkmode"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 30
